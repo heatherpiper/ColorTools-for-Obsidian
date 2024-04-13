@@ -82,7 +82,7 @@ Follow these steps to use the scripts in Obsidian.
 2. Add script files to Obsidian vault
    - Method 1: 
      - Create a new note inside whichever folder you have designated in the RunJS settings.
-     - Copy and paste[^1] the contents of one or both of the files contained in this repository into the new note.
+     - Copy and paste* the contents of one or both of the files contained in this repository into the new note.
      - The scripts can remain separated like they are or you may combine them into a single file. RunJS will read them as separate functions either way.
    - Method 2:
       - Download the files in this repository and then move them into whichever folder you have designated in the RunJS settings.
@@ -92,7 +92,8 @@ Follow these steps to use the scripts in Obsidian.
    - Find the method you would like to use to run each script. Click the `+` (plus) button by your preferred method and then choose the appropriate script from the popup dialog.
    - Refer to the [RunJS documentation](https://github.com/eoureo/obsidian-runjs) for more specific guidance.
 
-[^1]: If you copy code from the files in this repository, **make sure you first click the `raw` button** and then copy. Because of the way GitHub renders markdown files, the code block headers will only appear in the `raw` format. These headers are a crucial component for RunJS to identify scripts to use.
+> [!CAUTION]
+> If you copy code from the files in this repository, **make sure you first click the `raw` button** and then copy. Because of the way GitHub renders markdown files, the code block headers will only appear in the `raw` format. These headers are a crucial component for RunJS to identify scripts to use.
 
 ## License
 
