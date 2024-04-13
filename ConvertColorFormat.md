@@ -5,12 +5,12 @@
 ```js RunJS="{n:'ColorTools/Convert to RGB', t:'s'}"
 /**
  * Converts the selected HEX or HSL value to RGB format.
- * Accepts hex codes with `&num;`, `#`, or no prefix 
+ * Accepts HEX codes with `&num;`, `\#`, or no prefix 
  */
 const selectedText = this.app.workspace.activeLeaf.view.editor.getSelection();
 
 function hexToRgb(hex) {
-    hex = hex.replace(/&num;|#/g, "");
+    hex = hex.replace(/&num;|\\#/g, "");
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
@@ -31,7 +31,7 @@ function hslToRgb(h, s, l) {
 }
 
 let output;
-if (/^(&num;|#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|#)?[0-9A-F]{3}$/i.test(selectedText)) {
+if (/^(&num;|\\#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|\\#)?[0-9A-F]{3}$/i.test(selectedText)) {
     output = hexToRgb(selectedText);
 } else if (/^hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)$/i.test(selectedText)) {
     const [h, s, l] = selectedText.match(/\d+/g);
@@ -69,7 +69,7 @@ function rgbToHex(r, g, b) {
     r = parseInt(r);
     g = parseInt(g);
     b = parseInt(b);
-    return "&num;" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+    return "\#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
 }
 
 let output;
@@ -80,9 +80,9 @@ if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(selectedText)) {
     const [h, s, l] = selectedText.match(/\d+/g);
     const rgb = hslToRgb(h, s, l);
     output = rgbToHex(rgb[0], rgb[1], rgb[2]);
-} else if (/^(&num;|#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|#)?[0-9A-F]{3}$/i.test(selectedText)) {
-    const hex = selectedText.replace(/&num;|#/g, "");
-    output = "&num;" + hex.toUpperCase();
+} else if (/^(&num;|\\#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|\\#)?[0-9A-F]{3}$/i.test(selectedText)) {
+    const hex = selectedText.replace(/&num;|\\#/g, "");
+    output = "\#" + hex.toUpperCase();
 } else {
     output = "Invalid color format.";
 }
@@ -96,12 +96,12 @@ this.app.workspace.activeLeaf.view.editor.replaceSelection(output);
 ```js RunJS="{n:'ColorTools/Convert to HSL', t:'s'}"
 /**
  * Converts selected RGB or HEX value to HSL format
- * Accepts hex codes with `&num;`, `#`, or no prefix
+ * Accepts hex codes with `&num;`, `\#`, or no prefix
  */
 const selectedText = this.app.workspace.activeLeaf.view.editor.getSelection();
 
 function hexToRgb(hex) {
-    hex = hex.replace(/&num;|#/g, "");  // Remove &num; or # if present
+    hex = hex.replace(/&num;|\\#/g, "");  // Remove &num; or \# if present
     let r = parseInt(hex.substring(0, 2), 16);
     let g = parseInt(hex.substring(2, 4), 16);
     let b = parseInt(hex.substring(4, 6), 16);
@@ -133,7 +133,7 @@ let output;
 if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(selectedText)) {
     const [r, g, b] = selectedText.match(/\d+/g);
     output = rgbToHsl(r, g, b);
-} else if (/^(&num;|#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|#)?[0-9A-F]{3}$/i.test(selectedText)) {
+} else if (/^(&num;|\\#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|\\#)?[0-9A-F]{3}$/i.test(selectedText)) {
     const rgb = hexToRgb(selectedText);
     output = rgbToHsl(rgb[0], rgb[1], rgb[2]);
 } else {

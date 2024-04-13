@@ -6,12 +6,12 @@
 /**
  * Formats the selected color code by setting it as the background color
  * and choosing a contrasting color (black or white) as the foreground.
- * Accepts RGB values formatted `rgb(r, g, b)` or hex codes prepended either by `#`, by `&num;`, or by nothing at all.
+ * Accepts RGB values formatted `rgb(r, g, b)` or HEX codes prepended either by `\#`, by `&num;`, or by nothing at all.
  */
 function getContrastYIQ(colorInput){
     let r = 0, g = 0, b = 0;
     const originalInput = colorInput;
-    colorInput = colorInput.replace(/&num;|#/g, "");  // Normalize color code by removing &num; or #
+    colorInput = colorInput.replace(/&num;|\\#/g, "");  // Normalize color code by removing &num; or \#
 
     if (/^([0-9A-F]{3}){1,2}$/i.test(colorInput)) {  // HEX format
         if (colorInput.length == 3) {
@@ -33,15 +33,15 @@ function getContrastYIQ(colorInput){
 
 const selectedText = this.app.workspace.activeLeaf.view.editor.getSelection();
 let formattedText = "";
-let validColor = /^(&num;|#)?[0-9A-F]{3}([0-9A-F]{3})?$/i.test(selectedText) || /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(selectedText);
+let validColor = /^(&num;|\\#)?[0-9A-F]{3}([0-9A-F]{3})?$/i.test(selectedText) || /^rgb\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\)$/i.test(selectedText);
 
 if (validColor) {
     const contrastColor = getContrastYIQ(selectedText);
     if (selectedText.startsWith('rgb')) {
         formattedText = `<span style="background-color:${selectedText}; color:${contrastColor}; padding: 2px;">${selectedText}</span>`;
     } else {
-        const hexColor = selectedText.replace(/&num;|#/g, "").toUpperCase();
-        formattedText = `<span style="background-color:#${hexColor}; color:${contrastColor}; padding: 2px;">&num;${hexColor}</span>`;
+        const hexColor = selectedText.replace(/&num;|\\#/g, "").toUpperCase();
+        formattedText = `<span style="background-color:#${hexColor}; color:${contrastColor}; padding: 2px;">\\#${hexColor}</span>`;
     }
     this.app.workspace.activeLeaf.view.editor.replaceSelection(formattedText);
 } else {

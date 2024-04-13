@@ -29,13 +29,18 @@ To use one of the conversion scripts, first highlight text in your note which re
 Text strings may be formatted in the following ways: 
 
 - HEX:
-  - `#000000`
-  - `000000`
-  - `&num;000000`
+  - `\#000000` or `\#000`
+  - `000000` or `000`
+  - `&num;000000` or `&num;000`
 - RGB:
   - `rgb(r, g, b)`
 - HSL:
   - `hsl(h, v%, l%)`
+
+
+> [!TIP]
+> Because Obsidian interprets text prepended with the number symbol (`#`) as a note tag, it's necessary to format HEX colors by using `&num;` or `\#` instead. When viewing the note in Reading mode, both will be rendered as `#`.
+
 
 Example usage:
 
@@ -50,9 +55,9 @@ To use the color highlighting script, follow the same procedure as above.
 Text strings may be formatted in the following ways:
 
 - HEX:
-  - `#000000`
-  - `000000`
-  - `&num;000000`
+  - `\#000000` or `\000`
+  - `000000` or `000`
+  - `&num;000000` or `&num;000`
 - RGB:
   - `rgb(r, g, b)`
 - HSL:
@@ -62,11 +67,7 @@ Example usage:
 
 - Highlight a text string such as `d0d0d0`.
 - Invoke the script `ColorCodeBackgroundFill`.
-- The selected text is now surrounded by HTML which sets the background color to that selection, sets the appropriate foreground color to provide optimal contrast, and adds a little padding for readability. For example: `<span style="background-color:#D0D0D0; color:black; padding:2px">&num;D0D0D0</span>` which will display as highlighted text in Reading mode.
-
-
-> [!TIP]
-> Because Obsidian interprets text prepended with the number symbol (`#`) as a note tag, it is easier to deal with HEX formatted colors by using `&num;` instead. When viewing the note in Reading mode, `&num;` is rendered as `#`.  
+- The selected text is now surrounded by HTML which sets the background color to that selection, sets the appropriate foreground color to provide optimal contrast, and adds a little padding for readability. For example: `<span style="background-color:#D0D0D0; color:black; padding:2px">\#D0D0D0</span>` which will display as highlighted text in Reading mode.  
 
 ## Setup and Configuration
 
