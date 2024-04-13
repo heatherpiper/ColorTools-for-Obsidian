@@ -1,6 +1,6 @@
 # Color Formatting Tools for Obsidian and RunJS
 
-This repository JavaScript scripts designed for use with the [RunJS plugin](https://github.com/eoureo/obsidian-runjs) for [Obsidian.md](https://obsidian.md/), a powerful note-taking tool that uses markdown files. These scripts allow for dynamic conversion between different color code formats and visual highlighting of color codes.
+This repository contains JavaScript scripts designed for use with the [RunJS plugin](https://github.com/eoureo/obsidian-runjs) for [Obsidian.md](https://obsidian.md/), a powerful note-taking tool that uses markdown files. These scripts allow for dynamic conversion between different color code formats and visual highlighting of color codes. The scripts are contained in markdown-formatted files to allow for easy integration with your Obsidian vault.
 
 ## Purpose
 
@@ -12,7 +12,7 @@ These scripts enhance note-taking involving colors and color schemes by:
 
 ## Scripts
 
-This repository is organized into two script files:
+The scripts are organized into two files:
 
 - `ConvertColorFormat.md` contains scripts to convert color codes between HEX, RGB, and HSL formats:
   - `Convert to RGB`
@@ -78,7 +78,7 @@ Follow these steps to use the scripts in Obsidian.
    - Click `Install` then `Enable`
    - Follow the instructions to configure RunJS to your needs
 
-2. Add script files to Obsidian
+2. Add script files to Obsidian vault
    - Method 1: 
      - Create a new note inside whichever folder you have designated in the RunJS settings.
      - Copy and paste the contents of one or both of the files contained in this repository into the new note.
