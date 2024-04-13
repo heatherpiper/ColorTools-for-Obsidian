@@ -92,7 +92,7 @@ Follow these steps to use the scripts in Obsidian.
    - Find the method you would like to use to run each script. Click the `+` (plus) button by your preferred method and then choose the appropriate script from the popup dialog.
    - Refer to the [RunJS documentation](https://github.com/eoureo/obsidian-runjs) for more specific guidance.
 
-[^1] If you copy code from the files in this repository, **make sure you first click the `raw` button** and then copy. Because of the way GitHub renders markdown files, the code block headers will only appear in the `raw` format. These headers are a crucial component for RunJS to identify scripts to use.
+[^1]: If you copy code from the files in this repository, **make sure you first click the `raw` button** and then copy. Because of the way GitHub renders markdown files, the code block headers will only appear in the `raw` format. These headers are a crucial component for RunJS to identify scripts to use.
 
 ## License
 
