@@ -62,7 +62,7 @@ Example usage:
 
 - Highlight a text string such as `d0d0d0`.
 - Invoke the script `ColorCodeBackgroundFill`.
-- The selected text is now surrounded by HTML which sets the background color to that selection, sets the appropriate foreground color to provide optimal contrast, and adds a little padding for readability. For example: `<span style="background-color:#D0D0D0; color:black; padding:2px">&num;D0D0D0</span>` which displays like this in rendered markdown: <span style="background-color:#D0D0D0; color:black; padding:2px">&num;D0D0D0</span>.
+- The selected text is now surrounded by HTML which sets the background color to that selection, sets the appropriate foreground color to provide optimal contrast, and adds a little padding for readability. For example: `<span style="background-color:#D0D0D0; color:black; padding:2px">&num;D0D0D0</span>` which will display as highlighted text in Reading mode.
 
 
 > [!TIP]
