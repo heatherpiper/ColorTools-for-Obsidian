@@ -5,12 +5,15 @@
 ```js RunJS="{n:'ColorTools/Convert to RGB', t:'s'}"
 /**
  * Converts the selected HEX or HSL value to RGB format.
- * Accepts HEX codes with `&num;`, `\#`, or no prefix 
+ * Accepts hex codes with `&num;`, `\#`, or no prefix 
  */
 const selectedText = this.app.workspace.activeLeaf.view.editor.getSelection();
 
 function hexToRgb(hex) {
-    hex = hex.replace(/&num;|\\#/g, "");
+    hex = hex.replace(/(\\#|&num;)/g, '');
+    if (hex.length === 3) {
+        hex = hex.split('').map(char => char + char).join('');
+    }
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
@@ -26,12 +29,12 @@ function hslToRgb(h, s, l) {
     let m = l - c / 2;
     let r = Math.round((c + m) * 255);
     let g = Math.round((x + m) * 255);
-    let b = Math.round((m + m) * 255);
+    let b = Math.round(((1 - c - x) + m) * 255);
     return `rgb(${r}, ${g}, ${b})`;
 }
 
 let output;
-if (/^(&num;|\\#)?[0-9A-F]{6}$/i.test(selectedText) || /^(&num;|\\#)?[0-9A-F]{3}$/i.test(selectedText)) {
+if (/^(\\#|&num;)?[0-9A-F]{6}$/i.test(selectedText)) {
     output = hexToRgb(selectedText);
 } else if (/^hsl\((\d+),\s*([\d.]+)%,\s*([\d.]+)%\)$/i.test(selectedText)) {
     const [h, s, l] = selectedText.match(/\d+/g);
