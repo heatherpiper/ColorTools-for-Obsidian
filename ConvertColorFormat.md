@@ -104,7 +104,7 @@ function rgbToHex(r, g, b) {
     r = parseInt(r);
     g = parseInt(g);
     b = parseInt(b);
-    return "\#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+    return "\\#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
 }
 
 let output;
@@ -117,7 +117,7 @@ if (/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/i.test(selectedText)) {
     output = rgbToHex(rgb[0], rgb[1], rgb[2]);
 } else if (/^(\\#|&num;)?[0-9A-F]{6}$/i.test(selectedText)) {
     const hex = selectedText.replace(/(\\#|&num;)/g, "");
-    output = "\#" + hex.toUpperCase();
+    output = "\\#" + hex.toUpperCase();
 } else {
     output = "Invalid color format.";
 }
